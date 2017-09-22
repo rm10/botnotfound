@@ -60,3 +60,5 @@ typings/
 # auth files
 auth.json
 config.json
+darkskyauth.json
+geocoding.json
