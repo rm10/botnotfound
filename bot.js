@@ -16,9 +16,9 @@ var options = {
   formatter: null         // 'gpx', 'string', ...
 };
 
-/*var geocoder = NodeGeocoder(options);
+var geocoder = NodeGeocoder(options);
 
-geocoder.geocode("marinha grande", function(err, res) {
+/*geocoder.geocode("marinha grande", function(err, res) {
   console.log(res);
 
   var confidence = 0;
