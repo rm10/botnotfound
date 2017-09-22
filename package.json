@@ -1,11 +1,25 @@
 {
-  "name": "botnotfound 0.1",
+  "name": "botnotfound",
   "version": "1.0.0",
-  "description": "botnotfound - a test bot made by a noobie",
+  "description": "",
   "main": "bot.js",
-  "author": "RM10",
   "dependencies": {
     "discord.io": "^2.5.2",
-    "winston": "^2.3.1"
-  }
+    "discord.js": "^11.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rm10/botnotfound.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rm10/botnotfound/issues"
+  },
+  "homepage": "https://github.com/rm10/botnotfound#readme"
 }
