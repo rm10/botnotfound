@@ -32,11 +32,13 @@ var options = {
   },
   darksky = new DarkSky(options);
 
-// The ready event is vital, it means that your bot will only start reacting to information
-// from Discord _after_ ready is emitted
-client.on('ready', () => {
-  console.log('I am ready!');
-});
+/*client.on('ready', () => {
+  client.user.setStatus('online');
+  client.user.setGame('The Best Game');
+  //TODO this should be updated to a general solution
+  const channel = client.channels.get("227518767427616778");
+  channel.send("I'm back online bitches!");
+});*/
 
 // Create an event listener for messages
 client.on('message', message => {
@@ -105,5 +107,41 @@ client.on('message', message => {
   }
 });
 
+client.on("presenceUpdate", (oldMember, newMember) => {
+
+  console.log(oldMember.presence);
+  console.log(newMember.presence);
+
+  if (oldMember.presence.game !== newMember.presence.game) {
+    const channel = client.channels.get("227518767427616778");
+
+    if (newMember.presence.game != null) {
+      channel.send("Hey people, " + newMember.user.username + " is playing " + newMember.presence.game.name + ". You should join!");
+    }
+    else {
+      channel.send(newMember.user.username + " stopped playing " + oldMember.presence.game.name + ". And you missed your chance!");
+    }
+  }
+});
+
 // Log our bot in
 client.login(token);
+
+/*const getDefaultChannel = (guild) => {
+  // get "original" default channel
+  if(guild.channel.has(guild.id))
+    return guild.channels.get(guild.id)
+
+  // Check for a "general" channel, which is often default chat
+  if(guild.channels.exists("name", "general"))
+    return guild.channels.find("name", "general");
+
+  // Now we get into the heavy stuff: first channel in order where the bot can speak
+  // hold on to your hats!
+  return guild.channels
+   .filter(c => c.type === "text" &&
+     c.permissionsFor(guild.client.user).has("SEND_MESSAGES"))
+   .sort((a, b) => a.position - b.position ||
+     Long.fromString(a.id).sub(Long.fromString(b.id)).toNumber())
+   .first();
+}*/
