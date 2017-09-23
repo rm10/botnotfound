@@ -41,6 +41,8 @@ client.on('ready', () => {
 // Create an event listener for messages
 client.on('message', message => {
   if (message.content.substring(0, 1) == '-') {
+    message.channel.startTyping();
+
     var args = message.content.substring(1).split(' ');
     var cmd = args[0];
 
@@ -99,6 +101,7 @@ client.on('message', message => {
         });
       }
     }
+    message.channel.stopTyping();
   }
 });
 
